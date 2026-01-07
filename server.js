@@ -1,5 +1,10 @@
+// server.js
+// App- og server-entry point.
+// Ansvarlig for at konfigurere Express, middleware, routes og starte serveren.
+// Hører til "Controller-laget" i MVC, da den håndterer routing og request-flow.
+
+
 const express = require('express');
-const bodyParser = require('body-parser');
 const { connectDB } = require('./db');
 const errorHandler = require('./middleware/errorHandler');
 const { logger } = require('./middleware/logger');
@@ -10,7 +15,7 @@ const app = express();
 const port = 3000;
 
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(logger);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -30,6 +35,10 @@ app.get('/', (req, res) => {
         }
     });
 });
+app.use((req, res, next) => {
+    res.status(404).json({ message: 'Route not found' });
+});
+
 app.use(errorHandler);
 
 connectDB();

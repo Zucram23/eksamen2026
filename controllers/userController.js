@@ -1,3 +1,8 @@
+// controllers/userController.js
+// Controller som indeholder forretningslogik for brugere.
+// Modtager requests fra routes og kommunikerer med User-modellen.
+// Hører til Controller-laget i MVC.
+
 const User = require('../models/userModel');
 const { hashPassword } = require('../utils/bcrypt');
 const bcrypt = require('bcrypt');

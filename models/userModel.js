@@ -1,5 +1,9 @@
-const mongoose = require('mongoose');
+// models/User.js
+// Model der beskriver User-strukturen i databasen.
+// Indeholder schema og regler for hvordan brugere gemmes.
+// Hører til Model-laget i MVC.
 
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     name: {

@@ -1,3 +1,8 @@
+// routes/userRoutes.js
+// Definerer API-endpoints for bruger-relaterede requests.
+// Mapper HTTP-routes til userController.
+// Hører til Controller-laget i MVC.
+
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');

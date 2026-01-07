@@ -1,3 +1,8 @@
+// models/WorkoutPlan.js
+// Model der beskriver WorkoutPlan-data i databasen.
+// Bruges af controllers til at oprette og hente træningsplaner.
+// Hører til Model-laget i MVC.
+
 const mongoose = require('mongoose');
 
 const workoutPlanExerciseSchema = new mongoose.Schema({

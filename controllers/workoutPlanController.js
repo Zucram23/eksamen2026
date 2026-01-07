@@ -1,3 +1,8 @@
+// controllers/workoutPlanController.js
+// Controller for workout plans.
+// Indeholder logik til CRUD-operationer på WorkoutPlan-modellen.
+// Hører til Controller-laget i MVC.
+
 const WorkoutPlan = require('../models/workoutPlanModel');
 
 exports.createWorkoutPlan = async (req, res) => {
