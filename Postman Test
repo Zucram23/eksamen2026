@@ -1,0 +1,117 @@
+Users:
+
+POST /api/users/register - Opret bruger
+http://localhost:3000/api/users/register
+{
+    "name": "Anders Andersen",
+    "email": "anders@test.dk",
+    "password": "password123",
+    "profile": {
+        "age": 28,
+        "weight": 82,
+        "height": 185,
+        "gender": "male",
+        "fitnessGoal": "strength"
+    }
+}
+
+POST /api/users/login - Login
+http://localhost:3000/api/users/login
+{
+    "email": "anders@test.dk",
+    "password": "password123"
+}
+
+GET /api/users/:id - Hent bruger
+http://localhost:3000/api/users/ID
+
+PUT /api/users/:id - Opdater bruger
+http://localhost:3000/api/users/ID
+{
+    "name": "Anders Nielsen",
+    "profile": {
+        "age": 29,
+        "weight": 85,
+        "height": 185,
+        "gender": "male",
+        "fitnessGoal": "musclebuild-up"
+    }
+}
+
+DELETE /api/users/:id - Slet bruger
+http://localhost:3000/api/users/ID
+
+Workout Plans:
+POST /api/workout-plans - Opret plan
+http://localhost:3000/api/workout-plans
+{
+    "user": "user id",
+    "name": "Begynder Styrkeprogram",
+    "description": "3 dages træningsprogram for begyndere",
+    "workoutType": "strength",
+    "exercises": [
+        {
+            "exerciseName": "Bænkpres",
+            "sets": 3,
+            "reps": 10,
+            "restTime": 90,
+            "notes": "Hold albuerne ind"
+        },
+        {
+            "exerciseName": "Squat",
+            "sets": 4,
+            "reps": 8,
+            "restTime": 120,
+            "notes": "Gå til parallel"
+        },
+        {
+            "exerciseName": "Dødløft",
+            "sets": 3,
+            "reps": 5,
+            "restTime": 180,
+            "notes": "Hold ryggen lige"
+        }
+    ]
+}
+GET /api/workout-plans/user/:userId - Hent brugers planer
+http://localhost:3000/api/workout-plans/user/ID
+
+GET /api/workout-plans/:id - Hent én plan
+http://localhost:3000/api/workout-plans/ID
+
+PUT /api/workout-plans/:id - Opdater plan
+http://localhost:3000/api/workout-plans/ID
+{
+    "user": "user id",
+    "name": "Avanceret Styrkeprogram",
+    "description": "4 dages program med progressiv overload",
+    "workoutType": "strength",
+    "exercises": [
+        {
+            "exerciseName": "Bænkpres",
+            "sets": 5,
+            "reps": 5,
+            "restTime": 180,
+            "notes": "Tungere vægt"
+        },
+        {
+            "exerciseName": "Squat",
+            "sets": 5,
+            "reps": 5,
+            "restTime": 180,
+            "notes": "Fokus på form"
+        },
+        {
+            "exerciseName": "Overhead Press",
+            "sets": 3,
+            "reps": 8,
+            "restTime": 120,
+            "notes": "Ny øvelse tilføjet"
+        }
+    ]
+}
+
+DELETE /api/workout-plans/:id - Slet plan
+http://localhost:3000/api/workout-plans/id
+
+

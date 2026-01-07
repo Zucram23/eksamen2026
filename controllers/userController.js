@@ -7,12 +7,15 @@ exports.register = async (req, res) => {
     try {
         const { name, email, password, profile } = req.body;
 
+
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ error: 'Email already registered' });
         }
 
+
         const hashedPassword = await hashPassword(password);
+
 
         const user = new User({
             name,
@@ -37,9 +40,11 @@ exports.register = async (req, res) => {
     }
 };
 
+
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
+
 
         const user = await User.findOne({ email });
         if (!user) {
@@ -61,6 +66,16 @@ exports.login = async (req, res) => {
                 profile: user.profile
             }
         });
+    } catch (error) {
+        res.status(500).json({ error: 'Server error: ' + error.message });
+    }
+};
+
+
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().select('-password');
+        res.json(users);
     } catch (error) {
         res.status(500).json({ error: 'Server error: ' + error.message });
     }
