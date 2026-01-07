@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const workoutPlanExerciseSchema = new mongoose.Schema({
-    exercise: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exercise',
+    exerciseName: {
+        type: String,
         required: true
     },
     sets: {
@@ -23,5 +22,40 @@ const workoutPlanExerciseSchema = new mongoose.Schema({
     notes: {
         type: String,
     }
-})
-module.exports = mongoose.model('Exercise', workoutPlanExerciseSchema);
+});
+
+const workoutPlanSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String
+    },
+    workoutType: {
+        type: String,
+        enum: ['strength', 'cardio', 'flexibility', 'mixed'],
+        default: 'mixed'
+    },
+    exercises: [workoutPlanExerciseSchema],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+workoutPlanSchema.pre('save', function(next) {
+    this.updatedAt = Date.now();
+    next();
+});
+
+module.exports = mongoose.model('WorkoutPlan', workoutPlanSchema);
