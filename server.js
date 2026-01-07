@@ -1,12 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { connectDB } = require('./db');
+const errorHandler = require('./middleware/errorHandler');
+const { logger } = require('./middleware/logger');
+
 
 const app = express();
 const port = 3000;
 
 
 app.use(bodyParser.json());
+app.use(logger);
 
 
 const userRoutes = require('./routes/userRoutes');
@@ -25,7 +29,7 @@ app.get('/', (req, res) => {
         }
     });
 });
-
+app.use(errorHandler);
 
 connectDB();
 app.listen(port, () => console.log('Server klar på http://localhost:3000'));
