@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTracker - Fitness App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>FitTracker</h1>
+        <p>Din personlige træningsapp</p>
+    </header>
+
+    <main>
+        <!-- Login Form -->
+        <div id="loginSection" class="card">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Log ind</button>
+            </form>
+            <p>Har du ikke en konto? <a href="#" id="showRegister">Registrer her</a></p>
+        </div>
+
+        <!-- Register Form -->
+        <div id="registerSection" class="card hidden">
+            <h2>Opret Konto</h2>
+            <form id="registerForm">
+                <input type="text" id="regName" placeholder="Navn" required>
+                <input type="email" id="regEmail" placeholder="Email" required>
+                <input type="password" id="regPassword" placeholder="Password" required>
+                <input type="number" id="regAge" placeholder="Alder" required>
+                <input type="number" id="regWeight" placeholder="Vægt (kg)" required>
+                <input type="number" id="regHeight" placeholder="Højde (cm)" required>
+
+                <select id="regGender" required>
+                    <option value="">Vælg køn</option>
+                    <option value="male">Mand</option>
+                    <option value="female">Kvinde</option>
+                    <option value="other">Andet</option>
+                </select>
+
+                <select id="regGoal" required>
+                    <option value="">Vælg mål</option>
+                    <option value="weightloss">Vægttab</option>
+                    <option value="musclebuild-up">Muskelopbygning</option>
+                    <option value="strength">Styrke</option>
+                    <option value="condition">Kondition</option>
+                </select>
+
+                <button type="submit">Opret Konto</button>
+            </form>
+            <p>Har du allerede en konto? <a href="#" id="showLogin">Login her</a></p>
+        </div>
+
+        <!-- Dashboard (skjult indtil login) -->
+        <div id="dashboard" class="hidden">
+            <div class="user-info card">
+                <h2>Velkommen, <span id="userName"></span>!</h2>
+                <button id="logoutBtn">Log ud</button>
+            </div>
+
+            <div class="workout-section card">
+                <h2>Mine Træningsplaner</h2>
+                <button id="createPlanBtn">Opret Ny Plan</button>
+                <div id="workoutList"></div>
+            </div>
+
+            <!-- Create Plan Form -->
+            <div id="createPlanSection" class="card hidden">
+                <h2>Opret Træningsplan</h2>
+                <form id="createPlanForm">
+                    <input type="text" id="planName" placeholder="Plan navn" required>
+                    <textarea id="planDesc" placeholder="Beskrivelse" rows="3"></textarea>
+                    <select id="planType" required>
+                        <option value="">Vælg type</option>
+                        <option value="strength">Styrke</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="flexibility">Fleksibilitet</option>
+                        <option value="mixed">Blandet</option>
+                    </select>
+                    <button type="submit">Gem Plan</button>
+                    <button type="button" id="cancelPlan">Annuller</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FitTracker</p>
+    </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

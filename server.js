@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { connectDB } = require('./db');
 const errorHandler = require('./middleware/errorHandler');
 const { logger } = require('./middleware/logger');
+const path = require('path');
 
 
 const app = express();
@@ -11,7 +12,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(logger);
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 const userRoutes = require('./routes/userRoutes');
 const workoutPlanRoutes = require('./routes/workoutPlanRoutes');

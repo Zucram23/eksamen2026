@@ -1,4 +1,6 @@
-module.exports = (err, req, res,) => {
-    console.error('Error:', err.message);
-    res.status(404).json({ error: 'Something went wrong' });
+module.exports = (err, req, res, next) => {
+    console.error('Error:', err?.message || err);
+    res.status(err?.status || 500).json({
+        error: 'Something went wrong'
+    });
 };
